@@ -24,10 +24,15 @@ namespace ConsoleApplication1
             beginCoord[2] = beginCoordMap[2];
             endCoord[1] = endCoordMap[1];
             endCoord[2] = endCoordMap[2];
+
+
+            int[] dataCoord = { endCoord[1], endCoord[1], 0 };
+            mainQueue.Enqueue(dataCoord);
         }
 
         public Queue pathFind()
         {
+
             return mainQueue;
         }
 
