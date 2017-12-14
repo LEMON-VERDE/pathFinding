@@ -12,6 +12,11 @@ namespace ConsoleApplication1
         {
             Console.WriteLine("Hello World!");
             Console.ReadKey();
+
+            Maze maze = new Maze(5,5);
+
+            Console.WriteLine(maze);
+            Console.ReadKey();
         }
     }
 }
