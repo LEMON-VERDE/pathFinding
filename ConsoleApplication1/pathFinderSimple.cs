@@ -7,6 +7,13 @@ using System.Collections;
 
 namespace ConsoleApplication1
 {
+    static class Constants
+    {
+        public const uint ROW = 1;
+        public const uint COLUMN = 2;
+
+    }
+
     class pathFinderSimple : pathFinder
     {
         //Initialize queues use for iteration in pathfinding the shortest path
@@ -18,21 +25,21 @@ namespace ConsoleApplication1
 
         public void initMapping(uint nbRowMap, uint nbColMap, uint[] beginCoordMap, uint[] endCoordMap)
         {
-            mapFormat[1] = nbRowMap;
-            mapFormat[2] = nbColMap;
-            beginCoord[1] = beginCoordMap[1];
-            beginCoord[2] = beginCoordMap[2];
-            endCoord[1] = endCoordMap[1];
-            endCoord[2] = endCoordMap[2];
+            mapFormat[Constants.ROW] = nbRowMap;
+            mapFormat[Constants.COLUMN] = nbColMap;
+            beginCoord[Constants.ROW] = beginCoordMap[Constants.ROW];
+            beginCoord[Constants.COLUMN] = beginCoordMap[Constants.COLUMN];
+            endCoord[Constants.ROW] = endCoordMap[Constants.ROW];
+            endCoord[Constants.COLUMN] = endCoordMap[Constants.COLUMN];
 
 
-            uint[] dataCoord = { endCoord[1], endCoord[1], 0 };
+            uint[] dataCoord = { endCoord[Constants.ROW], endCoord[Constants.COLUMN], 0 };
             mainQueue.Enqueue(dataCoord);
         }
 
         public Queue pathFind()
         {
-
+            //initMapping( nbRowMap, nbColMap, beginCoordMap, endCoordMap);
             return mainQueue;
         }
 
