@@ -7,45 +7,77 @@ using System.Collections;
 
 namespace ConsoleApplication1
 {
-    static class Constants
-    {
-        public const uint ROW = 1;
-        public const uint COLUMN = 2;
-
-    }
 
     class pathFinderSimple : pathFinder
     {
-        //Initialize queues use for iteration in pathfinding the shortest path
+        public const int NUMBER_OF_POTENTIAL_DIRECTION = 8;
+
+        //Initialize queues used for iteration in pathfinding the shortest path
         public Queue mainQueue = new Queue();
         public Queue tempQueue = new Queue();
-        public uint[] endCoord = { 0, 0 };
-        public uint[] beginCoord = { 0, 0 };
-        public uint[] mapFormat = { 0, 0 };
-
-        public void initMapping(uint nbRowMap, uint nbColMap, uint[] beginCoordMap, uint[] endCoordMap)
-        {
-            mapFormat[Constants.ROW] = nbRowMap;
-            mapFormat[Constants.COLUMN] = nbColMap;
-            beginCoord[Constants.ROW] = beginCoordMap[Constants.ROW];
-            beginCoord[Constants.COLUMN] = beginCoordMap[Constants.COLUMN];
-            endCoord[Constants.ROW] = endCoordMap[Constants.ROW];
-            endCoord[Constants.COLUMN] = endCoordMap[Constants.COLUMN];
-
-
-            uint[] dataCoord = { endCoord[Constants.ROW], endCoord[Constants.COLUMN], 0 };
-            mainQueue.Enqueue(dataCoord);
-        }
-
-        public Queue pathFind()
-        {
-            //initMapping( nbRowMap, nbColMap, beginCoordMap, endCoordMap);
-            return mainQueue;
-        }
+        Coordinates currentCoord;
 
         public override Path solve(Maze maze)
         {
-            throw new NotImplementedException();
+            //Start the mapping of the whole maze
+            int[] dataCoord = { maze.endPosition.x, maze.endPosition.y, 0 };
+            mainQueue.Enqueue(dataCoord);
+            char[,] map = new char[maze.getHeight(), maze.getWidth()];
+            currentCoord = new Coordinates(maze.endPosition.x, maze.endPosition.y);
+
+            //    //Continue mapping of the whole maze
+            //    for (int i = 0; i < NUMBER_OF_POTENTIAL_DIRECTION; i++){
+            //        if(currentCoord.x == 0)
+
+            //    }
+            //    //maze[][]
+
+
+            //Build and return shortest path
+            Path path = new Path(maze.startPosition);
+            //Build...
+            return path;
+            //}
+
+            //public bool checkUpperLeft(Maze maze)
+            //{
+            //    if (maze.valueAt(currentCoord.x+1))
+            //    {
+
+            //    }
+            //    else
+            //    {
+
+            //    }
+            //}
+            //public bool checkUpper(Maze maze)
+            //{
+
+            //}
+            //public bool checkUpperRight(Maze maze)
+            //{
+
+            //}
+            //public bool checkLeft(Maze maze)
+            //{
+
+            //}
+            //public bool checkRight(Maze maze)
+            //{
+
+            //}
+            //public bool checkUnderLeft(Maze maze)
+            //{
+
+            //}
+            //public bool checkUnder(Maze maze)
+            //{
+
+            //}
+            //public bool checkUnderRight(Maze maze)
+            //{
+
+            //}
         }
     }
 }

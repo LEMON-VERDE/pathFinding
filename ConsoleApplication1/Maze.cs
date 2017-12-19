@@ -19,8 +19,8 @@ namespace ConsoleApplication1
         public const char TRAVERSIBLE_SYMBOL = ' ';
 
         int[,] grid;
-        Coordinates startPosition;
-        Coordinates endPosition;
+        public Coordinates startPosition;
+        public Coordinates endPosition;
 
 
         public Maze(int width, int height)
