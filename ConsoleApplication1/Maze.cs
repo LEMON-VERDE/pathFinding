@@ -8,33 +8,15 @@ namespace ConsoleApplication1
 {
     class Maze
     {
-        public class Coordinates
-        {
-            public int x;
-            public int y;
-
-            public Coordinates(int x, int y)
-            {
-                this.x = x;
-                this.y = y;
-            }
-
-            public bool equals(int x, int y)
-            {
-                return this.x == x && this.y == y;
-            }
-
-            public bool equals(Coordinates position)
-            {
-                return equals(position.x, position.y);
-            }
-        }
-
         public const int DEFAULT_MAZE_SIZE = 30;
-
         public const int BLOCKED = -1;
         public const int NOMINAL = 1;
         public const int FREE = 0;
+        public const char PATH_SYMBOL = 'X';
+        public const char START_SYMBOL = 'S';
+        public const char OBJECTIVE_SYMBOL = 'O';
+        public const char BLOCKED_SYMBOL = '#';
+        public const char TRAVERSIBLE_SYMBOL = ' ';
 
         int[,] grid;
         Coordinates startPosition;
@@ -118,9 +100,9 @@ namespace ConsoleApplication1
                 for (x = 0; x < carrRetrunIndex; ++x)
                 {
                     if (isTraversible(x - 1, y - 1))
-                        textGrid[colOffset + x] = ' ';
+                        textGrid[colOffset + x] = TRAVERSIBLE_SYMBOL;
                     else
-                        textGrid[colOffset + x] = '#';
+                        textGrid[colOffset + x] = BLOCKED_SYMBOL;
                 }
 
                 textGrid[colOffset + (x++)] = '\r';
@@ -129,10 +111,10 @@ namespace ConsoleApplication1
 
             int startX = startPosition.x + 1;
             int startY = startPosition.y + 1;
-            textGrid[startY * xSize + startX] = 'S';
+            textGrid[startY * xSize + startX] = START_SYMBOL;
             int endX = endPosition.x + 1;
             int endY = endPosition.y + 1;
-            textGrid[endY * xSize + endX] = 'O';
+            textGrid[endY * xSize + endX] = OBJECTIVE_SYMBOL;
 
             return new string(textGrid);
         }

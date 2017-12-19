@@ -7,6 +7,6 @@ using System.Threading.Tasks;
 namespace ConsoleApplication1
 {
     abstract class pathFinder{
-
+        public abstract Path solve(Maze maze);
     }
 }

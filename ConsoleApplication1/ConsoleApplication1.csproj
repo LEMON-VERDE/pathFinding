@@ -43,7 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Coordinates.cs" />
     <Compile Include="Maze.cs" />
+    <Compile Include="Path.cs" />
     <Compile Include="pathFinder.cs" />
     <Compile Include="pathFinderSimple.cs" />
     <Compile Include="Program.cs" />
