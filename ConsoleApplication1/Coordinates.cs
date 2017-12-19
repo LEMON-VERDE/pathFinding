@@ -8,8 +8,8 @@ namespace ConsoleApplication1
 {
     class Coordinates
     {
-        public int x;
-        public int y;
+        public readonly int x;
+        public readonly int y;
 
         public Coordinates(int x, int y)
         {
@@ -31,6 +31,14 @@ namespace ConsoleApplication1
         public bool equals(Coordinates position)
         {
             return equals(position.x, position.y);
+        }
+
+        public bool touches(Coordinates other)
+        {
+            int xDist = this.x - other.x;
+            int yDist = this.y - other.y;
+
+            return xDist >= -1 && xDist <= 1 && yDist >= -1 && yDist <= 1;
         }
     }
 }

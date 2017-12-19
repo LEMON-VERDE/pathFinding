@@ -6,17 +6,31 @@ using System.Threading.Tasks;
 
 namespace ConsoleApplication1
 {
-    class Path
+    class Path : LinkedList<Coordinates>
     {
-        Coordinates startingPoint;
-        LinkedList<Coordinates> pointList;
+        public Coordinates startingPoint;
 
-        public Path(Coordinates startingCoord)
+        public Path(Coordinates startingCoord) : base()
         {
-            pointList = new LinkedList<Coordinates>();
             startingPoint = new Coordinates(startingCoord); // Copying the Coordinates
 
-            pointList.Clear();
+            this.Clear();
+            this.AddFirst(startingCoord);
+        }
+
+        public bool isContinuous()
+        {
+            Enumerator iterator = GetEnumerator();
+
+            Coordinates lastElement = startingPoint;
+
+            while (iterator.MoveNext())
+            {
+                if (!lastElement.touches(iterator.Current))
+                    return false;
+            }
+
+            return true;
         }
     }
 }

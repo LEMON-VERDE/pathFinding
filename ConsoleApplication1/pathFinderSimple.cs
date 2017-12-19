@@ -43,5 +43,9 @@ namespace ConsoleApplication1
             return mainQueue;
         }
 
+        public override Path solve(Maze maze)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
