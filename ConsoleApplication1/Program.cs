@@ -13,7 +13,7 @@ namespace ConsoleApplication1
             Console.WriteLine("Hello World!");
             Console.ReadKey();
 
-            Maze maze = new Maze(5,5);
+            Maze maze = Maze.loadMazeFile("../../res/easyMaze.csv");
 
             Console.WriteLine(maze);
             Console.ReadKey();

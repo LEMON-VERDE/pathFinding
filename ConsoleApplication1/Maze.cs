@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -117,6 +118,49 @@ namespace ConsoleApplication1
             textGrid[endY * xSize + endX] = OBJECTIVE_SYMBOL;
 
             return new string(textGrid);
+        }
+
+        public static Maze loadMazeFile(string path)
+        {
+            var reader = new StreamReader(path);
+
+            LinkedList<string[]> lineList = new LinkedList<string[]>();
+
+            int maxLineLength = 0;
+
+            while(!reader.EndOfStream)
+            {
+                string[] lineString = reader.ReadLine().Split(',');
+
+                if (lineString.Length > maxLineLength)
+                    maxLineLength = lineString.Length;
+
+                lineList.AddLast(lineString);
+            }
+
+            Maze loadedMaze = new Maze(maxLineLength, lineList.Count);
+
+            for(int j = 0; j < lineList.Count; ++j)
+            {
+                string[] currentLine = lineList.ElementAt(j);
+
+                for (int i = 0; i < currentLine.Length; ++i)
+                {
+                    if (currentLine[i].Contains("_"))
+                        loadedMaze.grid[i,j] = 1;
+                    else if (currentLine[i].ToLower().Contains("x"))
+                        loadedMaze.grid[i,j] = -1;
+                    else
+                        loadedMaze.grid[i, j] = 0;
+
+                    if (currentLine[i].ToLower().Contains("s"))
+                        loadedMaze.startPosition = new Coordinates(i, j);
+                    if (currentLine[i].ToLower().Contains("o"))
+                        loadedMaze.endPosition = new Coordinates(i, j);
+                }
+            }
+
+            return loadedMaze;
         }
     }
 }
