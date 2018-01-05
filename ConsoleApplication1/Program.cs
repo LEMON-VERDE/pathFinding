@@ -15,7 +15,14 @@ namespace ConsoleApplication1
 
             Maze maze = Maze.loadMazeFile("../../res/easyMaze.csv");
 
-            Console.WriteLine(maze);
+            PathFinderAStar solver = new PathFinderAStar();
+
+            Path solution = solver.solve(maze);
+
+            Console.WriteLine(maze.solutionDisplay(solution));
+
+
+
             Console.ReadKey();
         }
     }

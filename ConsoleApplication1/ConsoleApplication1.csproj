@@ -47,6 +47,7 @@
     <Compile Include="Maze.cs" />
     <Compile Include="Path.cs" />
     <Compile Include="pathFinder.cs" />
+    <Compile Include="PathFinderAStar.cs" />
     <Compile Include="pathFinderSimple.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

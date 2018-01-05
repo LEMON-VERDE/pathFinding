@@ -162,5 +162,20 @@ namespace ConsoleApplication1
 
             return loadedMaze;
         }
+
+        public string solutionDisplay(Path solution)
+        {
+            char[] mazeString = this.ToString().ToCharArray();
+
+            foreach (Coordinates node in solution)
+            {
+                if (node.Equals(this.endPosition) || node.Equals(this.startPosition))
+                    continue;
+
+                mazeString[(node.y * (grid.GetLength(0) + 4)) + 1 + node.x] = PATH_SYMBOL;
+            }
+
+            return new string(mazeString);
+        }
     }
 }

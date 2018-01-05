@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApplication1
 {
-    class Coordinates
+    class Coordinates : IEquatable<Coordinates>
     {
         public readonly int x;
         public readonly int y;
@@ -19,18 +19,8 @@ namespace ConsoleApplication1
 
         //Copy Constructor
         public Coordinates(Coordinates model)
-            :this(model.x, model.y)
+            : this(model.x, model.y)
         {
-        }
-
-        public bool equals(int x, int y)
-        {
-            return this.x == x && this.y == y;
-        }
-
-        public bool equals(Coordinates position)
-        {
-            return equals(position.x, position.y);
         }
 
         public bool touches(Coordinates other)
@@ -39,6 +29,26 @@ namespace ConsoleApplication1
             int yDist = this.y - other.y;
 
             return xDist >= -1 && xDist <= 1 && yDist >= -1 && yDist <= 1;
+        }
+
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as Coordinates);
+        }
+
+        public bool Equals(Coordinates other)
+        {
+            return other != null &&
+                   x == other.x &&
+                   y == other.y;
+        }
+
+        public override int GetHashCode()
+        {
+            var hashCode = 1502939027;
+            hashCode = hashCode * -1521134295 + x.GetHashCode();
+            hashCode = hashCode * -1521134295 + y.GetHashCode();
+            return hashCode;
         }
     }
 }
